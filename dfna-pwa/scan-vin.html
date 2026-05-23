@@ -1,10 +1,3 @@
-// Accept VIN from QR scanner
-const params = new URLSearchParams(window.location.search);
-const scannedVIN = params.get("vin");
-
-if (scannedVIN) {
-  document.getElementById("vinInput").value = scannedVIN;
-}
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +5,21 @@ if (scannedVIN) {
   <title>DFNA VIN Scan</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="scan-page">
 
-  <h2>Scan or Enter VIN</h2>
+  <div class="scan-container">
+    <h2>Scan or Enter VIN</h2>
 
-  <input id="vinInput" type="text" placeholder="Enter VIN" autofocus>
+    <input id="vinInput" type="text" placeholder="Enter VIN" autofocus>
 
-  <button id="continueBtn">Continue</button>
+    <button id="continueBtn">Continue</button>
+
+    <br><br>
+
+    <button onclick="window.location.href='scan-driver.html'">
+      Scan QR Code
+    </button>
+  </div>
 
   <script src="scan-vin.js"></script>
 </body>
