@@ -1,5 +1,5 @@
 // Replace with your deployed Apps Script URL
-const API_BASE = "YOUR_APPS_SCRIPT_WEBAPP_URL";
+const API_BASE = "https://script.google.com/macros/s/AKfycbyX5D2M127vHmKaVzgKoBRQIMhTs-aiEzUAYTmrwc8GASqujHmV7GkIjVle94utALOkUQ/exec";
 
 document.getElementById("continueBtn").addEventListener("click", async () => {
   const vin = document.getElementById("vinInput").value.trim();
