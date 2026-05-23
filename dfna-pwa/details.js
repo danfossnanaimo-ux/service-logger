@@ -1,4 +1,4 @@
-const API_BASE = "YOUR_APPS_SCRIPT_WEBAPP_URL";  // Replace with deployed URL
+const API_BASE = "https://script.google.com/macros/s/AKfycbyX5D2M127vHmKaVzgKoBRQIMhTs-aiEzUAYTmrwc8GASqujHmV7GkIjVle94utALOkUQ/exec";  // Replace with deployed URL
 
 // Load locations from backend
 async function loadLocations() {
