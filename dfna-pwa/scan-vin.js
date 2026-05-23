@@ -1,13 +1,17 @@
 // Capture ?user=NAME from install link
-const urlParams = new URLSearchParams(window.location.search);
-const incomingUser = urlParams.get("user");
+const params = new URLSearchParams(window.location.search);
+const incomingUser = params.get("user");
+const scannedVIN = params.get("vin");
 
+// Store user if provided
 if (incomingUser) {
   localStorage.setItem("dfnaUser", incomingUser);
 }
 
-// Replace with your deployed Apps Script URL
-const API_BASE = "https://script.google.com/macros/s/AKfycbyX5D2M127vHmKaVzgKoBRQIMhTs-aiEzUAYTmrwc8GASqujHmV7GkIjVle94utALOkUQ/exec";
+// Auto-fill VIN if scanned
+if (scannedVIN) {
+  document.getElementById("vinInput").value = scannedVIN;
+}
 
 document.getElementById("continueBtn").addEventListener("click", async () => {
   const vin = document.getElementById("vinInput").value.trim();
@@ -17,8 +21,7 @@ document.getElementById("continueBtn").addEventListener("click", async () => {
     return;
   }
 
-  // TODO: Replace with real lookup if needed
-  // For now, extract van number from VIN sheet or mapping
+  // TODO: Replace with real lookup
   const vanNumber = await lookupVanNumber(vin);
 
   if (!vanNumber) {
@@ -31,7 +34,6 @@ document.getElementById("continueBtn").addEventListener("click", async () => {
 
 // Example VIN → van number lookup
 async function lookupVanNumber(vin) {
-  // Replace with your own lookup logic or endpoint
   const map = {
     "1FTBR2C86RKB36694": "603",
     "1FTYR2CM4HKB44671": "214"
