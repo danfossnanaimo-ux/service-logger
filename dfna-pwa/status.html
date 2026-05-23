@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<textarea id="box" style="width:100%;height:200px;"></textarea>
+<br><br>
+
+<button onclick="handleStatus('in')">In Service</button>
+<button onclick="handleStatus('side')">Sidelined</button>
+<button onclick="handleStatus('out')">Out of Service</button>
+
+<br><br>
+
+<button onclick="window.location.href='scanner.html'">Reset</button>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const data = params.get("data");
+  if (data) {
+    document.getElementById("box").value = data;
+  }
+
+  function handleStatus(status) {
+    if (status === "out") {
+      window.location.href = "location.html?data=" + encodeURIComponent(data);
+    } else {
+      alert("Status saved: " + status);
+    }
+  }
+</script>
+
+</body>
+</html>
