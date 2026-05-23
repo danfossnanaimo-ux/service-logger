@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Status</title>
+
 <style>
   body {
     margin: 0;
@@ -12,21 +15,7 @@
     flex-direction: column;
     align-items: center;
   }
-
-  .container {
-    width: 80vw;
-    margin-top: 10vh;
-    text-align: center;
-  }
-
-  video {
-    width: 80vw;
-    height: auto;
-    border-radius: 10px;
-    background: #111;
-  }
-
-  textarea, select, button {
+  textarea, button {
     width: 80vw;
     font-size: 1.2rem;
     padding: 12px;
@@ -34,12 +23,10 @@
     border-radius: 8px;
     border: none;
   }
-
   button {
     background: #444;
     color: #fff;
   }
-
   button:active {
     background: #666;
   }
@@ -48,23 +35,18 @@
 </head>
 <body>
 
-<textarea id="box" style="width:100%;height:200px;"></textarea>
-<br><br>
+<textarea id="box" style="height:200px;"></textarea>
 
 <button onclick="setStatus('in')">In Service</button>
 <button onclick="setStatus('side')">Sidelined</button>
 <button onclick="setStatus('out')">Out of Service</button>
-
-<br><br>
 
 <button onclick="window.location.href='scanner.html'">Reset</button>
 
 <script>
   const params = new URLSearchParams(window.location.search);
   const data = params.get("data");
-  if (data) {
-    document.getElementById("box").value = data;
-  }
+  if (data) document.getElementById("box").value = data;
 
   function setStatus(status) {
     if (status === "out") {
