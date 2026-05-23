@@ -14,20 +14,23 @@
   const params = new URLSearchParams(window.location.search);
   const data = params.get("data");
 
-  // TODO: replace with your real Apps Script URL
-  const SHEET_URL = "YOUR_APPS_SCRIPT_WEBAPP_URL";
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbyX5D2M127vHmKaVzgKoBRQIMhTs-aiEzUAYTmrwc8GASqujHmV7GkIjVle94utALOkUQ/exec";
 
   async function loadLocations() {
-    const res = await fetch(SHEET_URL);
-    const list = await res.json();
+    try {
+      const res = await fetch(SHEET_URL);
+      const list = await res.json();
 
-    const sel = document.getElementById("loc");
-    list.forEach(item => {
-      const opt = document.createElement("option");
-      opt.value = item;
-      opt.textContent = item;
-      sel.appendChild(opt);
-    });
+      const sel = document.getElementById("loc");
+      list.forEach(item => {
+        const opt = document.createElement("option");
+        opt.value = item;
+        opt.textContent = item;
+        sel.appendChild(opt);
+      });
+    } catch (e) {
+      alert("Error loading locations");
+    }
   }
 
   function confirmLocation() {
