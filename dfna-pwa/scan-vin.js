@@ -1,3 +1,11 @@
+// Capture ?user=NAME from install link
+const urlParams = new URLSearchParams(window.location.search);
+const incomingUser = urlParams.get("user");
+
+if (incomingUser) {
+  localStorage.setItem("dfnaUser", incomingUser);
+}
+
 // Replace with your deployed Apps Script URL
 const API_BASE = "https://script.google.com/macros/s/AKfycbyX5D2M127vHmKaVzgKoBRQIMhTs-aiEzUAYTmrwc8GASqujHmV7GkIjVle94utALOkUQ/exec";
 
