@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Location</title>
+
 <style>
   body {
     margin: 0;
@@ -12,21 +15,7 @@
     flex-direction: column;
     align-items: center;
   }
-
-  .container {
-    width: 80vw;
-    margin-top: 10vh;
-    text-align: center;
-  }
-
-  video {
-    width: 80vw;
-    height: auto;
-    border-radius: 10px;
-    background: #111;
-  }
-
-  textarea, select, button {
+  select, button {
     width: 80vw;
     font-size: 1.2rem;
     padding: 12px;
@@ -34,12 +23,10 @@
     border-radius: 8px;
     border: none;
   }
-
   button {
     background: #444;
     color: #fff;
   }
-
   button:active {
     background: #666;
   }
@@ -48,11 +35,9 @@
 </head>
 <body>
 
-<select id="loc" style="width:100%;height:40px;"></select>
-<br><br>
+<select id="loc"></select>
 
 <button onclick="confirmLocation()">Confirm</button>
-<br><br>
 
 <button onclick="window.location.href='scanner.html'">Reset</button>
 
@@ -63,20 +48,16 @@
   const SHEET_URL = "https://script.google.com/macros/s/AKfycbyX5D2M127vHmKaVzgKoBRQIMhTs-aiEzUAYTmrwc8GASqujHmV7GkIjVle94utALOkUQ/exec";
 
   async function loadLocations() {
-    try {
-      const res = await fetch(SHEET_URL);
-      const list = await res.json();
+    const res = await fetch(SHEET_URL);
+    const list = await res.json();
 
-      const sel = document.getElementById("loc");
-      list.forEach(item => {
-        const opt = document.createElement("option");
-        opt.value = item;
-        opt.textContent = item;
-        sel.appendChild(opt);
-      });
-    } catch (e) {
-      alert("Error loading locations");
-    }
+    const sel = document.getElementById("loc");
+    list.forEach(item => {
+      const opt = document.createElement("option");
+      opt.value = item;
+      opt.textContent = item;
+      sel.appendChild(opt);
+    });
   }
 
   function confirmLocation() {
