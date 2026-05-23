@@ -26,7 +26,9 @@
       statusText.textContent = "QR detected: " + result;
 
       // Redirect to VIN entry page with scanned VIN
-      window.location.href = `scan-vin.html?vin=${encodeURIComponent(result)}`;
+      const clean = result.trim();
+      window.location.href = `scan-vin.html?vin=${encodeURIComponent(clean)}`;
+
     });
 
     scanner.start();
