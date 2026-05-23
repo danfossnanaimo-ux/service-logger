@@ -1,3 +1,9 @@
+// Load stored user
+const savedUser = localStorage.getItem("dfnaUser");
+if (savedUser) {
+  document.getElementById("user").value = savedUser;
+}
+
 const API_BASE = "https://script.google.com/macros/s/AKfycbyX5D2M127vHmKaVzgKoBRQIMhTs-aiEzUAYTmrwc8GASqujHmV7GkIjVle94utALOkUQ/exec";  // Replace with deployed URL
 
 // Load locations from backend
