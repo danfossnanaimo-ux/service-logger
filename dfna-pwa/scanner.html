@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<video id="preview" style="width:100%;"></video>
+
+<script type="module">
+  import QrScanner from "./lib/qr-scanner.min.js";
+  QrScanner.WORKER_PATH = "./lib/qr-scanner-worker.min.js";
+
+  const video = document.getElementById("preview");
+
+  const scanner = new QrScanner(video, result => {
+    const clean = result.trim();
+    window.location.href = "status.html?data=" + encodeURIComponent(clean);
+  });
+
+  scanner.start();
+</script>
+
+</body>
+</html>
