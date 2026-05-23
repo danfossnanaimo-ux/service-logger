@@ -22,14 +22,31 @@
     const videoElem = document.getElementById("qr-video");
     const statusText = document.getElementById("statusText");
 
-    const scanner = new QrScanner(videoElem, result => {
-      statusText.textContent = "QR detected: " + result;
+    const scanner = new QrScanner(
+      videoElem,
+      result => {
+        // Clean up hidden characters
+        const raw = result.trim();
 
-      // Redirect to VIN entry page with scanned VIN
-      const clean = result.trim();
-      window.location.href = `scan-vin.html?vin=${encodeURIComponent(clean)}`;
+        // Extract a valid 17‑character VIN
+        const vinMatch = raw.match(/[A-HJ-NPR-Z0-9]{17}/i);
 
-    });
+        if (!vinMatch) {
+          statusText.textContent = "Invalid QR code";
+          return;
+        }
+
+        const vin = vinMatch[0];
+        statusText.textContent = "VIN detected: " + vin;
+
+        // Redirect to VIN entry page
+        window.location.href = `scan-vin.html?vin=${encodeURIComponent(vin)}`;
+      },
+      {
+        highlightScanRegion: true,
+        highlightCodeOutline: true
+      }
+    );
 
     scanner.start();
   </script>
