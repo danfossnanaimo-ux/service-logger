@@ -5,9 +5,9 @@
 <textarea id="box" style="width:100%;height:200px;"></textarea>
 <br><br>
 
-<button onclick="handleStatus('in')">In Service</button>
-<button onclick="handleStatus('side')">Sidelined</button>
-<button onclick="handleStatus('out')">Out of Service</button>
+<button onclick="setStatus('in')">In Service</button>
+<button onclick="setStatus('side')">Sidelined</button>
+<button onclick="setStatus('out')">Out of Service</button>
 
 <br><br>
 
@@ -20,7 +20,7 @@
     document.getElementById("box").value = data;
   }
 
-  function handleStatus(status) {
+  function setStatus(status) {
     if (status === "out") {
       window.location.href = "location.html?data=" + encodeURIComponent(data);
     } else {
