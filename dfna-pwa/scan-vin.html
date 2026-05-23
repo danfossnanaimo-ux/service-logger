@@ -1,3 +1,10 @@
+// Accept VIN from QR scanner
+const params = new URLSearchParams(window.location.search);
+const scannedVIN = params.get("vin");
+
+if (scannedVIN) {
+  document.getElementById("vinInput").value = scannedVIN;
+}
 <!DOCTYPE html>
 <html>
 <head>
