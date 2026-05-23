@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DFNA Van Log</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h2>DFNA Van Status Update</h2>
+
+  <form id="logForm">
+
+    <label>VIN</label>
+    <input id="vin" type="text" readonly>
+
+    <label>Van Number</label>
+    <input id="vanNumber" type="text" readonly>
+
+    <label>User</label>
+    <input id="user" type="text">
+
+    <label>Status</label>
+    <select id="status">
+      <option value="">Select status</option>
+      <option value="In Service">In Service</option>
+      <option value="Soft Sideline">Soft Sideline</option>
+      <option value="Out of Service">Out of Service</option>
+    </select>
+
+    <label>Location</label>
+    <select id="location"></select>
+
+    <label>Notes</label>
+    <textarea id="notes" placeholder="Optional unless vehicle is not in service"></textarea>
+
+    <button type="submit">Submit</button>
+
+  </form>
+
+  <script src="details.js"></script>
+</body>
+</html>
