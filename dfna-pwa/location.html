@@ -14,21 +14,42 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 200%;
   }
+
   select, button {
     width: 80vw;
-    font-size: 1.2rem;
-    padding: 12px;
+    padding: 20px;
     margin-top: 20px;
-    border-radius: 8px;
+    font-size: 1em;
+    border-radius: 10px;
     border: none;
   }
-  button {
+
+  #confirmBtn {
     background: #444;
     color: #fff;
   }
-  button:active {
-    background: #666;
+
+  #resetBtn {
+    background: #003399;
+    color: #fff;
+  }
+
+  #micBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: #444;
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
 
@@ -37,9 +58,11 @@
 
 <select id="loc"></select>
 
-<button onclick="confirmLocation()">Confirm</button>
+<button id="confirmBtn" onclick="confirmLocation()">Confirm</button>
 
-<button onclick="window.location.href='scanner.html'">Reset</button>
+<button id="resetBtn" onclick="window.location.href='scanner.html'">Reset</button>
+
+<button id="micBtn" onclick="openSpeech()">🎤</button>
 
 <script>
   const params = new URLSearchParams(window.location.search);
@@ -63,6 +86,16 @@
   function confirmLocation() {
     const loc = document.getElementById("loc").value;
     alert("Out of Service at: " + loc);
+  }
+
+  function openSpeech() {
+    const dummy = document.createElement("input");
+    dummy.style.position = "absolute";
+    dummy.style.opacity = 0;
+    document.body.appendChild(dummy);
+    dummy.focus();
+    dummy.click();
+    setTimeout(() => dummy.remove(), 500);
   }
 
   loadLocations();
