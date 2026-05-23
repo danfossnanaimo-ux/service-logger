@@ -1,3 +1,4 @@
+/* Global resets */
 * {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -10,36 +11,45 @@ body {
   color: #111827;
 }
 
+/* Headings */
 h2 {
   margin-top: 0;
   margin-bottom: 16px;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
   color: #0f172a;
+  text-align: center;
 }
 
+/* Form container */
 form {
   background: #ffffff;
   padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+  max-width: 500px;
+  margin: 0 auto;
 }
 
+/* Labels */
 label {
   display: block;
-  margin-top: 12px;
-  margin-bottom: 4px;
-  font-size: 13px;
-  color: #4b5563;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
 }
 
+/* Inputs, selects, textareas */
 input[type="text"],
 select,
 textarea {
   width: 100%;
-  padding: 8px 10px;
+  padding: 10px 12px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
-  font-size: 14px;
+  font-size: 15px;
   background: #ffffff;
 }
 
@@ -49,21 +59,23 @@ input[readonly] {
 }
 
 textarea {
-  min-height: 80px;
+  min-height: 90px;
   resize: vertical;
 }
 
+/* Buttons */
 button {
-  margin-top: 16px;
+  margin-top: 20px;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border-radius: 6px;
   border: none;
   background: #2563eb;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.15s ease;
 }
 
 button:hover {
@@ -74,6 +86,22 @@ button:active {
   background: #1e40af;
 }
 
+/* VIN input on scan page */
 #vinInput {
   margin-bottom: 12px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+/* Center the scan page */
+body.scan-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.scan-container {
+  max-width: 400px;
+  margin: 0 auto;
 }
