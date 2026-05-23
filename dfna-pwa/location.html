@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="loc" style="width:100%;height:40px;"></select>
+<br><br>
+
+<button onclick="confirmLocation()">Confirm</button>
+<br><br>
+
+<button onclick="window.location.href='scanner.html'">Reset</button>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const data = params.get("data");
+
+  // TODO: replace with your real Apps Script URL
+  const SHEET_URL = "YOUR_APPS_SCRIPT_WEBAPP_URL";
+
+  async function loadLocations() {
+    const res = await fetch(SHEET_URL);
+    const list = await res.json();
+
+    const sel = document.getElementById("loc");
+    list.forEach(item => {
+      const opt = document.createElement("option");
+      opt.value = item;
+      opt.textContent = item;
+      sel.appendChild(opt);
+    });
+  }
+
+  function confirmLocation() {
+    const loc = document.getElementById("loc").value;
+    alert("Out of Service at: " + loc);
+  }
+
+  loadLocations();
+</script>
+
+</body>
+</html>
